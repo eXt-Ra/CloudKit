@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudKit", "CloudKit\CloudKit.csproj", "{F77FA9E4-DC54-4262-A4C6-6B1CA56D0321}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudKit.Tests", "CloudKit.Tests\CloudKit.Tests.csproj", "{AC3280E5-0763-4E53-8C81-7C087B32C898}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F77FA9E4-DC54-4262-A4C6-6B1CA56D0321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F77FA9E4-DC54-4262-A4C6-6B1CA56D0321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F77FA9E4-DC54-4262-A4C6-6B1CA56D0321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F77FA9E4-DC54-4262-A4C6-6B1CA56D0321}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC3280E5-0763-4E53-8C81-7C087B32C898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC3280E5-0763-4E53-8C81-7C087B32C898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC3280E5-0763-4E53-8C81-7C087B32C898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC3280E5-0763-4E53-8C81-7C087B32C898}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
