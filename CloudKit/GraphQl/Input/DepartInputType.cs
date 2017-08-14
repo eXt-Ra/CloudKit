@@ -8,8 +8,8 @@ namespace CloudKit.GraphQl.Input
 		public DepartInputType()
 		{
 			Name = "DepartInputType";
-			Field<StringGraphType>("date_chargement");
-			Field<DetailClientInputType>("expediteur");
+			Field<NonNullGraphType<StringGraphType>>("date_chargement");
+			Field<NonNullGraphType<DetailClientInputType>>("expediteur");
 		}
 	}
 }

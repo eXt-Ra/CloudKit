@@ -9,6 +9,8 @@ namespace CloudKit.GraphQl.Query
     {
         public static PositionDataAccess positionData = new PositionDataAccess(@"server=DEA_SRV_DMS\SQLEXPRESS;database=ANDSYS_JETTEST;uid=sa;password=jb;");
         public static GpsDataAccess gpsData = new GpsDataAccess(@"server=DEA_SRV_DMS\SQLEXPRESS;database=ANDSYS_JETTEST;uid=sa;password=jb;");
+        //public static PositionDataAccess positionData = new PositionDataAccess(@"server=10.1.2.66;database=ANDSYS_JET;uid=sa;password=jb;");
+        //public static GpsDataAccess gpsData = new GpsDataAccess(@"server=10.1.2.66;database=ANDSYS_JET;uid=sa;password=jb;");
         public dmsQuery()
         {
             Field<PositionType>(
