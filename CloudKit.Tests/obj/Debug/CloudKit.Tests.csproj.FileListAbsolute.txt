@@ -34,3 +34,4 @@
 /Users/eXtRa/Documents/Dev/CLOUDKIT/Rework/CloudKit/CloudKit.Tests/obj/Debug/CloudKit.Tests.csproj.CoreCompileInputs.cache
 /Users/eXtRa/Documents/Dev/CLOUDKIT/Rework/CloudKit/CloudKit.Tests/obj/Debug/CloudKit.Tests.dll
 /Users/eXtRa/Documents/Dev/CLOUDKIT/Rework/CloudKit/CloudKit.Tests/obj/Debug/CloudKit.Tests.pdb
+E:\CloudKit\CloudKit\CloudKit.Tests\obj\Debug\CloudKit.Tests.csprojResolveAssemblyReference.cache
