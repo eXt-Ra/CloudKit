@@ -14,6 +14,8 @@ using GraphQL.Net;
 using System.Web.Http.Cors;
 using CloudKit.GraphQl.Query;
 using CloudKit.GraphQl.Input;
+using RestSharp;
+using Newtonsoft.Json;
 
 namespace CloudKit.Controllers
 {
@@ -75,10 +77,26 @@ namespace CloudKit.Controllers
 						fields.Add("reference_interne");
 						values.Add(updatepos.reference_interne);
 					}
-
-
                     return updatepos;
 				});
+
+
+                Field<PositionType>(
+                "createOrder",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<PositionInputType>> { Name = "order" }
+                ),
+                resolve: context =>
+                {
+                    var order = context.GetArgument<Result>("order");
+                    var client = new RestClient("http://localhost/dataws/api/importorder");
+                    var request = new RestRequest(Method.POST);
+                    request.AddHeader("content-type", "application/json");
+                    request.AddParameter("application/json", JsonConvert.SerializeObject(order), ParameterType.RequestBody);
+                    IRestResponse response = client.Execute(request);
+                    return order;
+                });
+
 			}
 		}		
     }
