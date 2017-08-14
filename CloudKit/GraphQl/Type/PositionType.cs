@@ -10,6 +10,8 @@ namespace CloudKit.GraphQl.Type
         {
             Field(x => x.numero_chrono).Description("Numéro de position");
             Field(x => x.reference_interne).Description("Référence du client");
+            Field(x => x.code_client).Description("Numéro de siret du client pour transmission EDI");
+            Field(x => x.code_livreur).Description("Numéro de siret du livreur pour transmission EDI");
 
             Field<DepartType>(
                 "depart",
@@ -32,6 +34,7 @@ namespace CloudKit.GraphQl.Type
                     return context.Source.marchandise;
                 }
             );
+            //Field(x => x.palettes).Description("Codebarres des étiquettes de UM");
         }
     }
 }

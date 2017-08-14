@@ -24,24 +24,10 @@ namespace CloudKit.Models
 		public PlanTransport plan_transport { get; set; }
 		public Ged ged { get; set; }
 		public Livraison livraison { get; set; }
-		public List<int> palettes { get; set; }
+        public List<string> palettes { get; set; }
 		public List<PlansTransport> plans_transports { get; set; }
     }
 
-	public class Position
-	{
-        public int id { get; set; }
-        public string numCommande { get; set; }
-		public string refClient { get; set; }
-		public Infos infos { get; set; }
-		public Depart depart { get; set; }
-		public Arrivee arrivee { get; set; }
-		public Marchandise marchandise { get; set; }
-		public PlanTransport plan_transport { get; set; }
-		public Livraison livraison { get; set; }
-		public List<int> palettes { get; set; }
-		public List<PlansTransport> plans_transports { get; set; }
-	}
 
 
   //  public class dd {
