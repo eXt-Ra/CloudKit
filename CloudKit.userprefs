@@ -1,22 +1,18 @@
 ﻿<Properties StartupConfiguration="{F77FA9E4-DC54-4262-A4C6-6B1CA56D0321}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CloudKit/GraphQl/Query/dmsQuery.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CloudKit/App_Start/WebApiConfig.cs">
     <Files>
-      <File FileName="CloudKit/Controllers/GraphQlController.cs" Line="91" Column="66" />
+      <File FileName="CloudKit/Controllers/GraphQlController.cs" Line="37" Column="53" />
       <File FileName="CloudKit/GraphQl/Query/dmsQuery.cs" Line="14" Column="1" />
+      <File FileName="CloudKit/GraphQl/Input/PositionInputType.cs" Line="16" Column="1" />
+      <File FileName="CloudKit/App_Start/WebApiConfig.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>result.Errors.IEnumerator</Value>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/eXtRa/Documents/Dev/CLOUDKIT/CloudKit/CloudKit/Controllers/GraphQlController.cs" relfile="CloudKit/Controllers/GraphQlController.cs" line="90" column="1" />
-      <Breakpoint file="/Users/eXtRa/Documents/Dev/CLOUDKIT/CloudKit/CloudKit/Controllers/GraphQlController.cs" relfile="CloudKit/Controllers/GraphQlController.cs" line="96" column="1" />
+      <Breakpoint file="/Users/eXtRa/Documents/Dev/CLOUDKIT/CloudKit/CloudKit/Controllers/GraphQlController.cs" relfile="CloudKit/Controllers/GraphQlController.cs" line="99" column="1" />
+      <Breakpoint file="/Users/eXtRa/Documents/Dev/CLOUDKIT/CloudKit/CloudKit/Controllers/GraphQlController.cs" relfile="CloudKit/Controllers/GraphQlController.cs" line="94" column="66" />
+      <Breakpoint file="/Users/eXtRa/Documents/Dev/CLOUDKIT/CloudKit/CloudKit/Controllers/GraphQlController.cs" relfile="CloudKit/Controllers/GraphQlController.cs" line="35" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

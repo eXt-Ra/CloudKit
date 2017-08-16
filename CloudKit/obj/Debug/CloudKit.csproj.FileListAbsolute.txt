@@ -101,3 +101,4 @@
 /Users/eXtRa/Documents/Dev/CLOUDKIT/CloudKit/CloudKit/obj/Debug/CloudKit.csproj.CoreCompileInputs.cache
 /Users/eXtRa/Documents/Dev/CLOUDKIT/CloudKit/CloudKit/obj/Debug/CloudKit.dll
 /Users/eXtRa/Documents/Dev/CLOUDKIT/CloudKit/CloudKit/obj/Debug/CloudKit.pdb
+/Users/eXtRa/Documents/Dev/CLOUDKIT/CloudKit/CloudKit/obj/Debug/CloudKit.csprojResolveAssemblyReference.cache

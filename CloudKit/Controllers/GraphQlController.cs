@@ -24,45 +24,48 @@ namespace CloudKit.Controllers
         public string OperationName { get; set; }
         public string NamedQuery { get; set; }
         public string Query { get; set; }
-        public string Variables { get; set; }
+        public object Variables { get; set; }
     }
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class GraphQlController : ApiController
     {
         public async Task<HttpResponseMessage> Post([FromBody]GraphQLQuery query)
-		{
-			var schema = new Schema { Query = new dmsQuery(), Mutation = new dmsMutation() };
-            
-			var result = await new DocumentExecuter().ExecuteAsync(_ =>
-			{
-				_.Schema = schema;
-                _.Query = query.Query;
-                _.Inputs = query.Variables.ToInputs();
-			}).ConfigureAwait(false);
+        {
+            var schema = new Schema { Query = new dmsQuery(), Mutation = new dmsMutation() };
 
-			if (result != null)
-			{
-				return Request.CreateResponse(HttpStatusCode.OK, result);
-			}
-			else
-			{
-				return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Aucun résultat");
-			}
-		}
+            var queryToExecute = query.Query;
+            var inputs = query.Variables.ToString().ToInputs();
 
-		internal class dmsMutation : ObjectGraphType<object>
-		{
-			public dmsMutation()
-			{
-				Field<PositionType>(
-				"updatePos",
-				arguments: new QueryArguments(
-					//new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "positionNumber", Description = "" },
-					new QueryArgument<NonNullGraphType<PositionInputType>> { Name = "position" }
-				),
-				resolve: context =>
-				{
+            var result = await new DocumentExecuter().ExecuteAsync(_ =>
+            {
+                _.Schema = schema;
+                _.Query = queryToExecute;
+                _.Inputs = inputs;
+            }).ConfigureAwait(false);
+
+            if (result != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Aucun résultat");
+            }
+        }
+
+        internal class dmsMutation : ObjectGraphType<object>
+        {
+            public dmsMutation()
+            {
+                Field<PositionType>(
+                "updatePos",
+                arguments: new QueryArguments(
+                    //new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "positionNumber", Description = "" },
+                    new QueryArgument<NonNullGraphType<PositionInputType>> { Name = "position" }
+                ),
+                resolve: context =>
+                {
                     var updatepos = context.GetArgument<Result>("position");
                     List<string> fields = new List<string>();
                     List<string> values = new List<string>();
@@ -72,13 +75,13 @@ namespace CloudKit.Controllers
                         fields.Add("numero_chrono");
                         values.Add(updatepos.numero_chrono);
                     }
-					if (updatepos.reference_interne != null)
-					{
-						fields.Add("reference_interne");
-						values.Add(updatepos.reference_interne);
-					}
+                    if (updatepos.reference_interne != null)
+                    {
+                        fields.Add("reference_interne");
+                        values.Add(updatepos.reference_interne);
+                    }
                     return updatepos;
-				});
+                });
 
 
                 Field<PositionType>(
@@ -97,7 +100,7 @@ namespace CloudKit.Controllers
                     return order;
                 });
 
-			}
-		}		
+            }
+        }
     }
 }
