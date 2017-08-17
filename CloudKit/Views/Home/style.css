@@ -2198,7 +2198,3 @@ body {
 .editorBar {
   height: 94vh;
 }
-
-.CodeMirror-scroll {
-  background-color: #263238;
-}

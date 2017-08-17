@@ -35,8 +35,7 @@ namespace CloudKit.Controllers
             var schema = new Schema { Query = new dmsQuery(), Mutation = new dmsMutation() };
 
             var queryToExecute = query.Query;
-            var inputs = query.Variables.ToString().ToInputs();
-
+            var inputs = query.Variables == null ? "".ToInputs() : query.Variables.ToString().ToInputs();
             var result = await new DocumentExecuter().ExecuteAsync(_ =>
             {
                 _.Schema = schema;
@@ -97,6 +96,7 @@ namespace CloudKit.Controllers
                     request.AddHeader("content-type", "application/json");
                     request.AddParameter("application/json", JsonConvert.SerializeObject(order), ParameterType.RequestBody);
                     IRestResponse response = client.Execute(request);
+                    order.numero_chrono = response.Content;
                     return order;
                 });
 
