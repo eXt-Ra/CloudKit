@@ -24,7 +24,7 @@ namespace CloudKit.Controllers
         public string OperationName { get; set; }
         public string NamedQuery { get; set; }
         public string Query { get; set; }
-        public object Variables { get; set; }
+        public string Variables { get; set; }
     }
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
@@ -97,9 +97,17 @@ namespace CloudKit.Controllers
                     request.AddHeader("content-type", "application/json");
                     request.AddParameter("application/json", JsonConvert.SerializeObject(order), ParameterType.RequestBody);
                     IRestResponse response = client.Execute(request);
+                    order.numero_chrono = response.Content;
                     return order;
                 });
-            }
-        }
+
+			}
+		}		
     }
 }
+
+        public object Variables { get; set; }
+    }
+
+            }
+        }

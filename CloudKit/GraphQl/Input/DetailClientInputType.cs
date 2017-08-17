@@ -12,7 +12,7 @@ namespace CloudKit.GraphQl.Input
 			Field<NonNullGraphType<StringGraphType>>("adresse");
 			Field<NonNullGraphType<StringGraphType>>("code_postal");
 			Field<NonNullGraphType<StringGraphType>>("ville");
-			Field<StringGraphType>("pays");
+			Field<NonNullGraphType<StringGraphType>>("pays");
 			Field<StringGraphType>("clientId");
 			Field<StringGraphType>("clientCode");
 			Field<StringGraphType>("adresse2");

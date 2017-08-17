@@ -3,6 +3,8 @@
     <Files>
       <File FileName="CloudKit/Controllers/GraphQlController.cs" Line="100" Column="34" />
       <File FileName="CloudKit/GraphQl/Query/dmsQuery.cs" Line="14" Column="1" />
+      <File FileName="CloudKit/GraphQl/Input/PositionInputType.cs" Line="16" Column="1" />
+      <File FileName="CloudKit/App_Start/WebApiConfig.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
