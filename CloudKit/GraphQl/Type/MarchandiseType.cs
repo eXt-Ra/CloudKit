@@ -1,4 +1,5 @@
-﻿using CloudKit.Models;
+﻿using System;
+using CloudKit.Models;
 using GraphQL.Types;
 
 namespace CloudKit.GraphQl.Type
@@ -11,7 +12,30 @@ namespace CloudKit.GraphQl.Type
             Field(x => x.nombre_etiquettes).Description("Nombre d'étiquette");
             Field(x => x.volume).Description("Volume");
             Field(x => x.metre_lineaire).Description("Mètre linéaire");
-            Field(x => x.poids).Description("Poids");
+            Field<StringGraphType>(
+                "poids",
+                 arguments: new QueryArguments(
+                    new QueryArgument<StringGraphType> { Name = "unite", Description = "Unité du poids" }
+                ),
+                resolve: context =>
+                {
+                    if (context.GetArgument<string>("unite") != null)
+                    {
+                        switch (context.GetArgument<string>("unite"))
+                        {
+                            case "kg":
+                                return context.Source.poids * 1000;
+                            case "tonne":
+                                return context.Source.poids;
+                            default:
+                                return ("Argument unité non valide, kg ou tonne");
+                        }
+                    }
+                    else
+                    {
+                        return context.Source.poids;
+                    }
+                });
             Field(x => x.palettes_euro).Description("Palettes europe");
             Field(x => x.porteur).Description("Porteur");
             Field(x => x.hayon_tp).Description("Hayon");

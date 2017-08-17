@@ -13,8 +13,9 @@ namespace CloudKit.GraphQl.Query
         //public static GpsDataAccess gpsData = new GpsDataAccess(@"server=10.1.2.66;database=ANDSYS_JET;uid=sa;password=jb;");
         public dmsQuery()
         {
+            
             Field<PositionType>(
-              "position", "Get d'une position",
+                "position", "Get d'une position <br> ex: {\n  position(positionNumber: \"1708022043\") {\n    numero_chrono\n    evenement{\n      date\n      information\n    }\n  }\n}",
                 arguments: new QueryArguments(
                     new QueryArgument<StringGraphType> { Name = "positionNumber", Description = "Numéro de position" },
                     new QueryArgument<StringGraphType> { Name = "parcelNumber", Description = "Numéro de colis" }

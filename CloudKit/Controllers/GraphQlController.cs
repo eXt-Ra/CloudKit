@@ -24,7 +24,7 @@ namespace CloudKit.Controllers
         public string OperationName { get; set; }
         public string NamedQuery { get; set; }
         public string Query { get; set; }
-        public string Variables { get; set; }
+        public object Variables { get; set; }
     }
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
@@ -35,7 +35,7 @@ namespace CloudKit.Controllers
             var schema = new Schema { Query = new dmsQuery(), Mutation = new dmsMutation() };
 
             var queryToExecute = query.Query;
-            var inputs = query.Variables.ToString().ToInputs();
+            var inputs = query.Variables == null ? "".ToInputs():query.Variables.ToString().ToInputs();
 
             var result = await new DocumentExecuter().ExecuteAsync(_ =>
             {
@@ -105,9 +105,3 @@ namespace CloudKit.Controllers
 		}		
     }
 }
-
-        public object Variables { get; set; }
-    }
-
-            }
-        }

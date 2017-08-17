@@ -7,7 +7,7 @@ namespace CloudKit.Models
 {
     public class Result
     {
-		public int count { get; set; }
+		public int id { get; set; }
 		public List<string> frets { get; set; }
 		public string numero_chrono { get; set; }
 		public string reference_interne { get; set; }
