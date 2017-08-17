@@ -97,6 +97,7 @@ namespace CloudKit.Controllers
                     request.AddHeader("content-type", "application/json");
                     request.AddParameter("application/json", JsonConvert.SerializeObject(order), ParameterType.RequestBody);
                     IRestResponse response = client.Execute(request);
+                    order.numero_chrono = response.Content;
                     return order;
                 });
 

@@ -12,6 +12,7 @@ namespace CloudKit.GraphQl.Input
             Field<StringGraphType>("imperatif_livraison");
             Field<DateGraphType>("date_imperatif_livraison");
 			Field<DetailClientInputType>("destinataire");
-		}
+            Field<StringGraphType>("telephone");
+        }
 	}
 }
