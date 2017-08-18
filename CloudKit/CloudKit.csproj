@@ -142,6 +142,7 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Middleware\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -206,6 +207,8 @@
     <Compile Include="Models\Evenement.cs" />
     <Compile Include="BDD\EvenementDataAccess.cs" />
     <Compile Include="GraphQl\Type\EvenementType.cs" />
+    <Compile Include="Middleware\TokenMiddleware.cs" />
+    <Compile Include="Middleware\UserAuthorizations.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
