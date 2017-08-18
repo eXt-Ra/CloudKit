@@ -62,8 +62,8 @@ namespace CloudKit.BDD
                             },
                             nombre_colis = readerOrdre["OTSCOL"] == null ? 0 : Convert.ToInt32(readerOrdre["OTSCOL"]),
                             //m.metre_lineaire = (float)readerOrdre["OTSLONG"]; //isNUll
-                            poids = (double)readerOrdre["OTSPDS"],
-                            hayon_tp = Convert.ToBoolean((decimal)readerOrdre["OTSLIVHAYON"]),
+                            poids = readerOrdre["OTSPDS"] == null ? 0 : (double)readerOrdre["OTSPDS"],
+                            hayon_tp = readerOrdre["OTSLIVHAYON"] == System.DBNull.Value ? false : Convert.ToBoolean(readerOrdre["OTSLIVHAYON"]),
                             observations = readerOrdre["OTSMEMO"] == null ? "" : readerOrdre["OTSMEMO"].ToString()
                         };
 

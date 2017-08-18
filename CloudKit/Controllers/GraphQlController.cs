@@ -35,7 +35,8 @@ namespace CloudKit.Controllers
             var schema = new Schema { Query = new dmsQuery(), Mutation = new dmsMutation() };
 
             var queryToExecute = query.Query;
-            var inputs = query.Variables.ToString().ToInputs();
+            var inputs = query.Variables == null ? "".ToInputs() : query.Variables.ToString().ToInputs();
+
 
             var result = await new DocumentExecuter().ExecuteAsync(_ =>
             {
@@ -104,8 +105,4 @@ namespace CloudKit.Controllers
 			}
 		}		
     }
-}
-
-            var inputs = query.Variables == null ? "".ToInputs():query.Variables.ToString().ToInputs();
-
 }
