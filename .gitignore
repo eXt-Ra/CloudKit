@@ -13,3 +13,5 @@ CloudKit\.userprefs
 \.vs/
 
 \.DS_Store
+
+CloudKit/bin/
