@@ -15,7 +15,7 @@ namespace CloudKit
         {
             config.EnableCors();
 
-			client = new MongoClient("mongodb://RomainHori:Dealtis25-@localhost:27017/Horizon");
+			client = new MongoClient("mongodb://RomainHori:Dealtis25-@localhost:27017/admin");
 			database = client.GetDatabase("Horizon");
 			collection = database.GetCollection<BsonDocument>("userapis");
 			

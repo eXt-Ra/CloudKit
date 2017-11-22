@@ -24,7 +24,7 @@ namespace CloudKit
             {
                 if (filterContext.Request.Headers.Referrer != null)
                 {
-                    if (filterContext.Request.Headers.Referrer.AbsoluteUri != "http://localhost:8888/")
+                    if (filterContext.Request.Headers.Referrer.AbsoluteUri != "http://graphiql.dealtis.fr/")
                     {
                         var headerToken = filterContext.Request.Headers.SingleOrDefault(x => x.Key == _authorizedToken);
                         if (headerToken.Key != null)

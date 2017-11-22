@@ -32,7 +32,8 @@ namespace CloudKit.Controllers
     {
         public async Task<HttpResponseMessage> Post([FromBody]GraphQLQuery query)
         {
-            var schema = new Schema { Query = new dmsQuery(), Mutation = new dmsMutation() };
+            //var schema = new Schema { Query = new dmsQuery(), Mutation = new dmsMutation() };
+            var schema = new Schema { Query = new dmsQuery()};
 
             var queryToExecute = query.Query;
             var inputs = query.Variables == null ? "".ToInputs() : query.Variables.ToString().ToInputs();
