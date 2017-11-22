@@ -219,6 +219,9 @@
     <Content Include="Web.config" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="Views\Home\a2f8ec6bed7904007f7a.js" />
+    <Content Include="Views\Home\index.cshtml" />
+    <Content Include="Views\Home\style.css" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
