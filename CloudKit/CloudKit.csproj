@@ -142,8 +142,6 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Scripts\" />
-    <Folder Include="Middleware\" />
-    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -220,8 +218,11 @@
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="Views\Home\a2f8ec6bed7904007f7a.js" />
-    <Content Include="Views\Home\index.cshtml" />
+    <Content Include="Views\Home\index.html" />
     <Content Include="Views\Home\style.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\web.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
