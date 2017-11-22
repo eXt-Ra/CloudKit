@@ -14,6 +14,8 @@ using GraphQL.Net;
 using System.Web.Http.Cors;
 using CloudKit.GraphQl.Query;
 using CloudKit.GraphQl.Input;
+using RestSharp;
+using Newtonsoft.Json;
 
 namespace CloudKit.Controllers
 {
@@ -22,45 +24,50 @@ namespace CloudKit.Controllers
         public string OperationName { get; set; }
         public string NamedQuery { get; set; }
         public string Query { get; set; }
-        public string Variables { get; set; }
+        public object Variables { get; set; }
     }
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class GraphQlController : ApiController
     {
         public async Task<HttpResponseMessage> Post([FromBody]GraphQLQuery query)
-		{
-			var schema = new Schema { Query = new dmsQuery(), Mutation = new dmsMutation() };
-            
-			var result = await new DocumentExecuter().ExecuteAsync(_ =>
-			{
-				_.Schema = schema;
-                _.Query = query.Query;
-                _.Inputs = query.Variables.ToInputs();
-			}).ConfigureAwait(false);
+        {
+            //var schema = new Schema { Query = new dmsQuery(), Mutation = new dmsMutation() };
+            var schema = new Schema { Query = new dmsQuery()};
 
-			if (result != null)
-			{
-				return Request.CreateResponse(HttpStatusCode.OK, result);
-			}
-			else
-			{
-				return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Aucun résultat");
-			}
-		}
+            var queryToExecute = query.Query;
+            var inputs = query.Variables == null ? "".ToInputs() : query.Variables.ToString().ToInputs();
 
-		internal class dmsMutation : ObjectGraphType<object>
-		{
-			public dmsMutation()
-			{
-				Field<PositionType>(
-				"updatePos",
-				arguments: new QueryArguments(
-					//new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "positionNumber", Description = "" },
-					new QueryArgument<NonNullGraphType<PositionInputType>> { Name = "position" }
-				),
-				resolve: context =>
-				{
+
+            var result = await new DocumentExecuter().ExecuteAsync(_ =>
+            {
+                _.Schema = schema;
+                _.Query = queryToExecute;
+                _.Inputs = inputs;
+            }).ConfigureAwait(false);
+
+            if (result != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Aucun résultat");
+            }
+        }
+
+        internal class dmsMutation : ObjectGraphType<object>
+        {
+            public dmsMutation()
+            {
+                Field<PositionType>(
+                "updatePos",
+                arguments: new QueryArguments(
+                    //new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "positionNumber", Description = "" },
+                    new QueryArgument<NonNullGraphType<PositionInputType>> { Name = "position" }
+                ),
+                resolve: context =>
+                {
                     var updatepos = context.GetArgument<Result>("position");
                     List<string> fields = new List<string>();
                     List<string> values = new List<string>();
@@ -70,15 +77,32 @@ namespace CloudKit.Controllers
                         fields.Add("numero_chrono");
                         values.Add(updatepos.numero_chrono);
                     }
-					if (updatepos.reference_interne != null)
-					{
-						fields.Add("reference_interne");
-						values.Add(updatepos.reference_interne);
-					}
-
-
+                    if (updatepos.reference_interne != null)
+                    {
+                        fields.Add("reference_interne");
+                        values.Add(updatepos.reference_interne);
+                    }
                     return updatepos;
-				});
+                });
+
+
+                Field<PositionType>(
+                "createOrder",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<PositionInputType>> { Name = "order" }
+                ),
+                resolve: context =>
+                {
+                    var order = context.GetArgument<Result>("order");
+                    var client = new RestClient("http://localhost/dataws/api/importorder");
+                    var request = new RestRequest(Method.POST);
+                    request.AddHeader("content-type", "application/json");
+                    request.AddParameter("application/json", JsonConvert.SerializeObject(order), ParameterType.RequestBody);
+                    IRestResponse response = client.Execute(request);
+                    order.numero_chrono = response.Content;
+                    return order;
+                });
+
 			}
 		}		
     }
